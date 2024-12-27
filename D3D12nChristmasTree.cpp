@@ -462,7 +462,7 @@ float D3D12nChristmasTree::RandomPercent()
 //
 // Randomly position all of the particles in space determined by the spread value
 //
-void D3D12nChristmasTree::LoadParticles(_Out_writes_(numParticles) Particle* pParticles, const XMFLOAT3& center, const XMFLOAT4& velocity, float spread, UINT numParticles)
+void D3D12nChristmasTree::LoadParticlesSpace(_Out_writes_(numParticles) Particle* pParticles, const XMFLOAT3& center, const XMFLOAT4& velocity, float spread, UINT numParticles)
 {
     srand(0);
 
@@ -489,7 +489,7 @@ void D3D12nChristmasTree::LoadParticles(_Out_writes_(numParticles) Particle* pPa
 //*
 //* Build the position of each particle on the Christmas Tree, including the top of the tree
 //*
-void D3D12nChristmasTree::LoadParticles2(_Out_writes_(numParticles) Particle2* pParticles, const XMFLOAT4& velocity, const bool onTree, UINT numParticles)
+void D3D12nChristmasTree::LoadParticlesTree(_Out_writes_(numParticles) Particle2* pParticles, const XMFLOAT4& velocity, const bool onTree, UINT numParticles)
 {
 
     int r = ceil(numParticles / GPUxThreads) - 1;
@@ -514,6 +514,8 @@ void D3D12nChristmasTree::LoadParticles2(_Out_writes_(numParticles) Particle2* p
             k++;
         }
     }
+
+    // To do: Change the top of tree to something like a sphere...
 
     const float X = 0.525731f;
     const float Z = 0.850651f;
@@ -617,7 +619,6 @@ void D3D12nChristmasTree::CalcVel(_Out_writes_(numParticles) Particle* pParticle
 }
 
 
-
 // Create the position and velocity buffer shader resources.
 void D3D12nChristmasTree::CreateParticleBuffers()
 {
@@ -632,8 +633,8 @@ void D3D12nChristmasTree::CreateParticleBuffers()
 
     // 
     float centerSpread = ParticleSpread * 0.0f; // .5
-    LoadParticles(&data[0], XMFLOAT3(centerSpread, 0, 0), XMFLOAT4(0, 0, -20, 1 / 100000000.0f), ParticleSpread, ParticleCount);
-    LoadParticles2(&data2[0], XMFLOAT4(1, 1, 1, 0), bool(false), ParticleCount);
+    LoadParticlesSpace(&data[0], XMFLOAT3(centerSpread, 0, 0), XMFLOAT4(0, 0, -20, 1 / 100000000.0f), ParticleSpread, ParticleCount);
+    LoadParticlesTree(&data2[0], XMFLOAT4(1, 1, 1, 0), bool(false), ParticleCount);
 
     CalcVel(&data[0], &data2[0], ParticleCount);
 

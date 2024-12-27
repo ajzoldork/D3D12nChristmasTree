@@ -213,12 +213,12 @@ private:
 
     void CreateAsyncContexts();
 
-    void CreateVertexBuffer();
     float RandomPercent();
-    void LoadParticles(_Out_writes_(numParticles) Particle* pParticles, const XMFLOAT3 &center, const XMFLOAT4 &velocity, float spread, UINT numParticles);
-    // added LoadParticles2
-    void LoadParticles2(_Out_writes_(numParticles) Particle2* pParticles, const XMFLOAT4& velocity, const bool onTree, UINT numParticles);
+    void LoadParticlesSpace(_Out_writes_(numParticles) Particle* pParticles, const XMFLOAT3 &center, const XMFLOAT4 &velocity, float spread, UINT numParticles);
+    void LoadParticlesTree(_Out_writes_(numParticles) Particle2* pParticles, const XMFLOAT4& velocity, const bool onTree, UINT numParticles);
     void CalcVel(_Out_writes_(numParticles) Particle* pParticles, Particle2* pParticles2, UINT numParticles);
+
+    void CreateVertexBuffer();
     void CreateParticleBuffers();
     void PopulateCommandList();
 

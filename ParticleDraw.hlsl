@@ -102,11 +102,11 @@ VSParticleDrawOut VSParticleDraw(VSParticleIn input)
     }
     else if (i == 16)
     {
-        output.color = float4(0.0f, 1.0f, 1.0f, 1.0f);
+        output.color = float4(0.0f, 1.0f, 1.0f, 1.0f); // light blue
     }
     else if (i == 20)
     {
-        output.color = float4(1.0f, 1.0f, 0.0f, 1.0f);
+        output.color = float4(1.0f, 1.0f, 0.0f, 1.0f); // yellow
     }
     else if (i == 24)
     {
@@ -119,10 +119,6 @@ VSParticleDrawOut VSParticleDraw(VSParticleIn input)
     else if (i == 32)
     {
         output.color = float4(1.0f, 1.0f, 0.0f, 1.0f); // yellow
-    }
-    else if (i == 33)
-    {
-        output.color = float4(1.0f, 1.0f, 1.0f, 1.0f); //yellow
     }
     else
     {
