@@ -98,7 +98,7 @@ VSParticleDrawOut VSParticleDraw(VSParticleIn input)
     }
     else if (i == 12)
     {
-        output.color = float4(1.0f, 0.0f, 1.0f, 1.0f);
+        output.color = float4(1.0f, 0.0f, 1.0f, 1.0f); // purple
     }
     else if (i == 16)
     {
